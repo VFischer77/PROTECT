@@ -21,3 +21,12 @@
 - Q03-OPEN-02: KPI counting rules — open.
 - Q03-OPEN-03: Change causality evidence thresholds — open.
 - Q03-OPEN-04: Predictive acceptance thresholds — open.
+
+- **FR-001 — OWNER APPROVED:** ISO 9001 mandatory minimum PROTECT requirements baseline, with additive applicable specialized/industry requirements. Does not assert client certification or conformity. See `architecture/FR-001-layered-requirements-foundation.md`.
+- **AD-002 — REVISED:** 20 architectural findings remain open; remediation packages AR-01–AR-05 proposed. See `audit/AD-002-revised-ISO9001-foundation.md`.
+
+## FR-001 impact review — OPEN
+- Q01 v0.8 conditional baseline: reconcile generic event management and ISO 9001 requirements coverage; retain Q01-OPEN-01–03.
+- Q02 v0.2 conditional baseline: reconcile corrective-action applicability and ISO 9001 improvement requirements; retain Q02-OPEN-01–04.
+- Q03 v0.1 proposed: reconcile change-management requirements and proportional implementation; retain Q03-OPEN-01–04.
+- Full clause-by-clause ISO 9001 normative mapping and edition verification remain outstanding; no conformity claim authorized.

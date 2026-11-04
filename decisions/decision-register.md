@@ -30,3 +30,5 @@
 - Q02 v0.2 conditional baseline: reconcile corrective-action applicability and ISO 9001 improvement requirements; retain Q02-OPEN-01–04.
 - Q03 v0.1 proposed: reconcile change-management requirements and proportional implementation; retain Q03-OPEN-01–04.
 - Full clause-by-clause ISO 9001 normative mapping and edition verification remain outstanding; no conformity claim authorized.
+
+- **INT-001 — Integrated methodology draft:** Owner authorized consideration and integration of uploaded FC-PROTECT Predictive Operational Performance & Risk Management methodology. AR-01–AR-05 Revision 1 created as PROPOSED design; no qualification, implementation or deployment. FR-001 remains governing. See `architecture/AR-01-05-integrated-methodology-revision-1.md`.

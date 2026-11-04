@@ -19,3 +19,6 @@ Client retains responsibility for integrity of originating source records, regul
 - `shared-intelligence/`: contextual recurrence specification
 - `qualification/`: proposed test scenarios, not executed
 - `decisions/`: owner decisions and open items
+
+## Mandatory foundation (FR-001)
+ISO 9001 is the common minimum PROTECT requirements baseline; applicable sector, specialized management and jurisdictional obligations add to it. See `architecture/FR-001-layered-requirements-foundation.md`. The revised architecture audit is `audit/AD-002-revised-ISO9001-foundation.md`. These are design records only, not a claim of client ISO 9001 conformity or a completed clause-by-clause audit.

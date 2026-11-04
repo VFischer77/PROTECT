@@ -22,3 +22,6 @@ Client retains responsibility for integrity of originating source records, regul
 
 ## Mandatory foundation (FR-001)
 ISO 9001 is the common minimum PROTECT requirements baseline; applicable sector, specialized management and jurisdictional obligations add to it. See `architecture/FR-001-layered-requirements-foundation.md`. The revised architecture audit is `audit/AD-002-revised-ISO9001-foundation.md`. These are design records only, not a claim of client ISO 9001 conformity or a completed clause-by-clause audit.
+
+## Integrated operational performance methodology
+The user-provided FC-PROTECT methodology has been incorporated into proposed `architecture/AR-01-05-integrated-methodology-revision-1.md` (KPI families, statistical levels, alerts, validation and modular commercial packages). FR-001 remains the mandatory ISO 9001 foundation. The integrated draft does not close audit findings or authorize software implementation.

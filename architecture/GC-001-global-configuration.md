@@ -20,8 +20,11 @@ GMP/Quality; Operational Excellence; Enterprise Risk Management; Business Contin
 - **GC-006:** Module-specific event facts and analytical parameters may still be collected; they do not constitute repeated global Industry/Service Domain selection.
 - **GC-007:** Multi-industry or multi-domain work requires an explicit, authorized workspace profile design/extension; do not assume one selection is sufficient for materially distinct regulated contexts.
 
+## FR-001 foundation override
+Every configured workspace inherits the mandatory ISO 9001 requirements baseline. Industry/Service Domain determine additional applicable overlays and proportional workflows, not removal of the common baseline. See `architecture/FR-001-layered-requirements-foundation.md`. The requirements register must distinguish not assessed, insufficient evidence, justified non-applicability, conforming and nonconforming. A limited-scope module assessment does not establish full organizational conformity.
+
 ## Traceability
-Applies to PROTECT architecture and all current/future modules, specifically Q01 v0.8 and Q02 v0.2. Does not alter Q01's conditional acceptance or Q02's proposed/unaccepted status.
+Applies to PROTECT architecture and all current/future modules, specifically Q01 v0.8 and Q02 v0.2. Does not alter Q01's conditional acceptance or Q02's conditional acceptance status.
 
 ## Proposed verification (not executed)
 - GC-T01: Initialize once; all active modules receive identical profile.

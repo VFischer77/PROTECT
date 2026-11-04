@@ -18,3 +18,6 @@ B01 Business Impact Analysis; B02 Continuity Plan Readiness; B03 Recovery Capabi
 S01 Supplier Performance & Reliability; S02 Regulatory & External Supplier Signals; S03 Supplier Organizational Maturity; S04 Supplier Disruption Risk.
 
 G01 Regulatory Intelligence & Authority Trends. Reuse from Aster ABI-001, if pursued, requires a controlled independent fork; no current reuse claim.
+
+## Mandatory layered requirements — FR-001
+ISO 9001 is the minimum requirements and assessment foundation across PROTECT engagements. Additional specialized and industry/jurisdiction requirements are additive as applicable, without silently removing the baseline. GC-001 selects Industry and Service Domain once; AGP-001 is a proposed adaptive governance extension, not yet accepted or implemented. See `architecture/FR-001-layered-requirements-foundation.md`. Assessment scope and available evidence limit conformity claims.

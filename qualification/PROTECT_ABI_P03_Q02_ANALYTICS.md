@@ -1,6 +1,6 @@
 # PROTECT–ABI–P03 — Q02 CAPA analytical foundation
 
-**Status:** Implemented in pilot branch; focused qualification to be recorded separately; founder acceptance pending.
+**Status:** Conditional PASS — 12/12 focused synthetic tests passed in an isolated reconstructed Python execution; founder acceptance pending.
 
 ## Reference design
 `modules/Q02-CAPA/Q02-v0.2-consolidated-design-review.md`; Q01 v0.8; P02 shared workspace integration.
@@ -20,3 +20,6 @@ Q02-OPEN-01/02/03/04 remain open; Q01-OPEN-01/02/03 remain open; module-to-crite
 ## Focused qualification
 12 synthetic-data unittest scenarios in `tests/test_protect_q01_p03.py`.
 Run: `python -m unittest discover -s tests -p 'test_protect_q01_p03.py' -v`.
+
+## Execution evidence
+2026-11-05: 12 tests executed, 0 failures, 0 errors in isolated Python using manually reconstructed implementation and test scenarios. This was not a direct repository checkout or GitHub Actions run; exact committed artifact execution and full regression remain unverified.

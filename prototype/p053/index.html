@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PROTECT | P05.3 Management Dashboard Pilot</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#172c40;background:#f4f7f8}
+*{box-sizing:border-box}body{margin:0}header{background:#142e43;color:white;padding:22px max(20px,calc((100vw - 1100px)/2))}
+header h1{margin:0;font-size:1.55rem}header p{margin:5px 0;color:#cbdbe2}
+main{max-width:1100px;margin:auto;padding:22px} .notice{background:#fff8e8;border-left:4px solid #b9841e;padding:12px 16px;margin-bottom:20px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.card,.panel{background:white;border:1px solid #dce5e9;border-radius:10px;padding:18px}
+.metric{font-size:2rem;font-weight:700;margin:8px 0}.muted{color:#526779;font-size:.9rem}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.panel h2{font-size:1.1rem;margin:0 0 16px}.bars{display:flex;align-items:end;gap:12px;height:180px;border-bottom:1px solid #c6d4da;padding:10px}
+.baritem{display:flex;flex:1;flex-direction:column;align-items:center;justify-content:end;height:100%;gap:5px}
+.bar{width:min(64px,80%);background:#327c79;border-radius:5px 5px 0 0;min-height:2px}
+.barlabel{font-size:.75rem;text-align:center;overflow-wrap:anywhere}
+.legendrow{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid #eef2f4;gap:10px}
+.pill{background:#eaf1f4;border-radius:20px;padding:4px 9px;font-size:.8rem}
+.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+select{font:inherit;padding:8px;border:1px solid #b6c9d2;border-radius:6px}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:10px;border-bottom:1px solid #e1e8ec;font-size:.9rem;overflow-wrap:anywhere}
+th{background:#f4f7f8} .tablewrap{overflow-x:auto}.empty{padding:12px;color:#526779}
+footer{margin:20px 0;color:#526779;font-size:.85rem}
+@media(max-width:700px){.cards,.panels{grid-template-columns:1fr}.barlabel{font-size:.68rem}main{padding:12px}}
+</style>
+</head>
+<body>
+<header><h1>PROTECT · Operational Intelligence</h1><p>P05.3 management dashboard — read-only pilot</p></header>
+<main>
+<div class="notice" role="note"><strong>SYNTHETIC DEMONSTRATION — NOT FOR GxP DECISIONS.</strong> Descriptive counts only; no approved KPIs, predictions, risk scores or automated CAPA decisions.</div>
+<div id="status" role="status" aria-live="polite">Loading synthetic dashboard data…</div>
+<section class="cards" aria-label="Summary">
+<div class="card"><div class="muted">Deviation records</div><div class="metric" id="deviations">—</div></div>
+<div class="card"><div class="muted">CAPA records</div><div class="metric" id="capas">—</div></div>
+<div class="card"><div class="muted">Human-review items</div><div class="metric" id="reviews">—</div></div>
+</section>
+<section class="panels">
+<div class="panel"><h2>Deviation counts by month</h2><div class="bars" id="trend" aria-label="Monthly deviation count chart"></div><p class="muted">Missing months are not imputed. Counts are not normalized.</p></div>
+<div class="panel"><h2>Client-recorded CAPA outcomes</h2><div id="outcomes"></div><h2 style="margin-top:22px">Review signal categories</h2><div id="signals"></div></div>
+</section>
+<section class="panel" style="margin-top:16px">
+<h2>Human review worklist</h2>
+<div class="controls"><label for="filter">Signal type</label><select id="filter"><option value="ALL">All signals</option></select><span class="muted" id="visibleCount"></span></div>
+<div class="tablewrap"><table><thead><tr><th>Signal</th><th>Deviation references</th><th>CAPA references</th><th>Review status</th></tr></thead><tbody id="worklist"></tbody></table></div>
+<p class="muted">Evidence requires source-record and contextual human review. This view cannot close or escalate records.</p>
+</section>
+<footer id="limits"></footer>
+</main><script src="./dashboard.js"></script>
+</body></html>

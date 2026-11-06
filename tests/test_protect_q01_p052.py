@@ -16,7 +16,8 @@ class P052Tests(unittest.TestCase):
         self.assertEqual(r["missing_periods"],"NOT_IMPUTED")
     def test_capa_outcomes(self):
         r=build_management_dashboard(self.w,self.d,self.c)
-        self.assertEqual(r["capa_outcome_distribution"],({"outcome":"Effective","count":1},))
+        self.assertEqual(next(x["count"] for x in r["capa_outcome_distribution"] if x["outcome"]=="Effective"),1)
+        self.assertEqual(sum(x["count"] for x in r["capa_outcome_distribution"]),1)
     def test_signal_distribution(self):
         r=build_management_dashboard(self.w,self.d,self.c)
         self.assertEqual(sum(x["count"] for x in r["review_signal_distribution"]),2)

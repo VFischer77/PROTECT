@@ -1,0 +1,36 @@
+name: PROTECT P05.3 interactive dashboard qualification
+on:
+  push:
+    branches:
+      - pilot/protect-abi-p053-interactive-dashboard
+  workflow_dispatch:
+jobs:
+  dashboard:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Consolidated P01-P05.3 actual-source tests
+        run: python -m unittest discover -s tests -p 'test_protect_q01_p*.py' -v
+      - name: Browser script syntax
+        run: node --check prototype/p053/dashboard.js
+      - name: Synthetic dashboard export smoke check
+        run: |
+          python -m protect_q01_p01.dashboard_demo prototype/p053/synthetic-dashboard.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("prototype/p053/synthetic-dashboard.json")
+          d=json.loads(p.read_text())
+          assert d["summary"]["human_review_items"] == 2
+          assert d["chart_semantics"] == "DESCRIPTIVE_COUNTS_ONLY"
+          assert d["human_decision"] == "REQUIRED"
+          assert d["risk_prediction"] == "NOT_PERFORMED"
+          assert "SYN-" in p.read_text()
+          print("P05.3 synthetic dashboard contract smoke PASS")
+          PY

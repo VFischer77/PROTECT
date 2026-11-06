@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PROTECT — Recommendation Review Prototype</title><style>
+body{font:16px system-ui,sans-serif;max-width:850px;margin:24px auto;padding:0 16px;background:#f4f7f8;color:#203747}
+article{background:#fff;border:1px solid #d8e3e8;border-radius:12px;padding:22px}
+h1{font-size:1.45rem}label{display:block;font-weight:600;margin:16px 0 6px}
+select,textarea,input{width:100%;padding:10px;border:1px solid #bacbd3;border-radius:6px;font:inherit;box-sizing:border-box}
+textarea{min-height:90px}button{background:#206c68;color:#fff;border:0;border-radius:7px;padding:12px 18px;font:inherit;cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}.note{background:#fff3d9;padding:12px;border-radius:6px}
+small{color:#526879}.history{border-top:1px solid #dce5e9;margin-top:18px;padding-top:12px}
+</style></head><body><article><h1>PROTECT · Recommendations & Decisions</h1>
+<p class="note"><strong>SYNTHETIC DESIGN PREVIEW.</strong> No records are saved or sent to an eQMS.</p>
+<h2>REC-001 — Recurring equipment-related deviations</h2>
+<p>Evaluate maintenance practices and determine whether investigation, improvement or a formal CAPA referral is appropriate.</p>
+<label for="decision">Management decision / proposed action</label><select id="decision">
+<option value="INVESTIGATE">Further investigation required</option><option value="MONITOR">Continue monitoring</option>
+<option value="IMPROVEMENT">Recommend improvement</option><option value="REFER_CAPA">Recommend CAPA initiation</option>
+<option value="ACCEPT">Accept recommendation</option><option value="REJECT">Reject recommendation</option>
+<option value="OTHER">Other — specify</option></select>
+<div id="detailArea" hidden><label for="detail">Action description</label><textarea id="detail"></textarea></div>
+<label for="comment">Comment / decision rationale</label><textarea id="comment" placeholder="Record observations, evidence and rationale"></textarea>
+<label for="actor">Reviewer name (demo only)</label><input id="actor" placeholder="Enter reviewer name">
+<p><button id="copy" disabled>Copy draft review entry</button></p>
+<p><small>Future “Initiate CAPA” button: reserved, disabled until eQMS integration and human authorization are qualified. External eQMS remains the system of record.</small></p>
+<div class="history"><h2>Comment history</h2><p>Not available in this static preview. Future entries require authenticated users, timestamped audit history and authorized persistence.</p></div>
+</article><script src="recommendation-review.js"></script></body></html>

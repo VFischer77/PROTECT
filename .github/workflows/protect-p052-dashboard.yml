@@ -1,0 +1,37 @@
+name: PROTECT P05.2 dashboard offline qualification
+on:
+  push:
+    branches:
+      - pilot/protect-abi-p052-management-dashboard
+  workflow_dispatch:
+jobs:
+  dashboard:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Actual-source P01-P05.2 consolidated regression
+        run: python -m unittest discover -s tests -p 'test_protect_q01_p*.py' -v
+      - name: Synthetic end-to-end management dashboard
+        run: |
+          python - <<'PY'
+          from protect_q01_p01.integration import Workspace
+          from protect_q01_p01.capa_analytics import CapaRecord
+          from protect_q01_p01.dashboard import build_management_dashboard
+          d=[{"id":"D1","occurred_on":"2026-01-05","failure_mechanism":"Seal"},
+             {"id":"D2","occurred_on":"2026-03-05","failure_mechanism":"seal"}]
+          c=[CapaRecord("C1","2026-01-10","2026-02-01","2026-02-20","Effective",("D1","D2"))]
+          r=build_management_dashboard(Workspace("Pharmaceuticals","GMP/Quality"),d,c)
+          assert len(r["deviation_trend"]) == 2
+          assert r["summary"]["human_review_items"] == 2
+          assert r["capa_outcome_distribution"][0]["outcome"] == "Effective"
+          assert r["kpi_status"] == "NOT_APPROVED"
+          assert r["risk_prediction"] == "NOT_PERFORMED"
+          assert r["human_decision"] == "REQUIRED"
+          print("P05.2 E2E PASS: descriptive dashboard, human-review worklist and source outcome preserved")
+          PY

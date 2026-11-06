@@ -12,10 +12,10 @@ Based on `modules/Q01-Deviations/Q01-v0.8-conditional-baseline.md`, `requirement
 - Synthetic data only in tests. No automatic classification, CAPA effectiveness assessment, or predictive risk assignment.
 
 ## Qualification
-Seven focused unittest scenarios supplied; run locally from repository root:
+Seven focused unittest scenarios executed on 2026-11-05 in an isolated Python environment using the exact source and test content retrieved from this pilot branch. Result: **7 passed, 0 failures, 0 errors**. Run locally from repository root:
 `python -m unittest discover -s tests -p 'test_protect_q01_p01.py' -v`
 
-GitHub repository CI not executed. Focused test outcome must be independently recorded after execution; no PASS is claimed by this document.
+GitHub repository CI not executed. The focused tests passed in an isolated environment; this does not demonstrate a repository CI run or production qualification.
 
 ## Open design controls
 - Q01-OPEN-01 industry-specific classification criteria and module-to-criteria mapping: REVIEW REQUIRED, not implemented.

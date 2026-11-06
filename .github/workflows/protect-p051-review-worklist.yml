@@ -1,0 +1,35 @@
+name: PROTECT P05.1 offline qualification
+on:
+  push:
+    branches:
+      - pilot/protect-abi-p051-review-worklist
+  workflow_dispatch:
+jobs:
+  review-worklist:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Actual-source P01-P05.1 regression
+        run: python -m unittest discover -s tests -p 'test_protect_q01_p*.py' -v
+      - name: Synthetic end-to-end review worklist
+        run: |
+          python - <<'PY'
+          from protect_q01_p01.integration import Workspace
+          from protect_q01_p01.capa_analytics import CapaRecord
+          from protect_q01_p01.review_worklist import build_review_worklist
+          d=[{"id":"D1","occurred_on":"2026-01-05","failure_mechanism":"Seal issue"},
+             {"id":"D2","occurred_on":"2026-03-05","failure_mechanism":"seal issue"}]
+          c=[CapaRecord("C1","2026-01-10","2026-02-01","2026-02-20","Effective",("D1","D2"))]
+          r=build_review_worklist(Workspace("Pharmaceuticals","GMP/Quality"),d,c)
+          assert r["worklist_count"] == 2
+          assert r["source_snapshot"]["client_capa_outcome_counts"]["Effective"] == 1
+          assert all(x["review_status"] == "OPEN_FOR_HUMAN_REVIEW" for x in r["worklist"])
+          assert r["data_modification"] is False
+          print("P05.1 E2E PASS: two distinct review signals, human control, client effectiveness unchanged")
+          PY

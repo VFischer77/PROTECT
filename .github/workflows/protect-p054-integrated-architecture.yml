@@ -1,0 +1,33 @@
+name: PROTECT P05.4 integrated dashboard qualification
+on:
+  push:
+    branches:
+      - pilot/protect-abi-p054-integrated-dashboard-architecture
+  workflow_dispatch:
+jobs:
+  integrated:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: P01-P05.4 actual-source regression
+        run: python -m unittest discover -s tests -p 'test_protect_q01_p*.py' -v
+      - name: P05.4 synthetic integrated smoke
+        run: |
+          python - <<'PY'
+          from protect_q01_p01.integration import Workspace
+          from protect_q01_p01.integrated_dashboard import build_integrated_dashboard
+          d=build_integrated_dashboard(Workspace("Pharmaceuticals","GMP/Quality"),[],[])
+          assert d["available_module_count"] == 2
+          assert all(x["metrics"] is None for x in d["modules"] if x["status"] != "PILOT_DATA_AVAILABLE")
+          assert d["cross_module_scope"] == "Q01_Q02_ONLY"
+          assert d["human_decision"] == "REQUIRED"
+          print("P05.4 integrated module registry smoke PASS")
+          PY
+      - name: Existing prototype JS syntax
+        run: node --check prototype/p053/dashboard.js

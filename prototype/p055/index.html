@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PROTECT — Integrated Management Dashboard</title>
+<style>
+:root{font:16px system-ui,-apple-system,Segoe UI,sans-serif;color:#183348;background:#f3f6f8}*{box-sizing:border-box}
+body{margin:0}header{background:#142d42;color:#fff;padding:24px max(20px,calc((100vw - 1180px)/2))}
+header h1{margin:0;font-size:1.6rem}header p{margin:6px 0;color:#c8d7df}
+main{max-width:1180px;margin:auto;padding:22px}
+.notice{background:#fff5df;border-left:4px solid #b98019;padding:14px;margin-bottom:18px}
+.layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:18px}
+aside,.panel,.card{background:white;border:1px solid #dce5e9;border-radius:10px;padding:16px}
+aside h2,.panel h2{font-size:1.05rem;margin:0 0 12px}
+nav{display:grid;gap:6px}button{font:inherit;text-align:left;border:1px solid #dbe5e9;background:white;padding:11px;border-radius:7px;cursor:pointer;color:#183348}
+button[aria-pressed=true]{background:#e4f2ef;border-color:#377c76}button:focus-visible{outline:3px solid #377c76;outline-offset:2px}
+button:disabled{cursor:not-allowed;opacity:.65}
+.modulecode{font-weight:700;margin-right:6px}.state{display:block;font-size:.75rem;color:#587084;margin-top:3px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:14px}
+.metric{font-size:2rem;font-weight:700}.muted{color:#526a7b;font-size:.88rem}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:14px}.row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #edf0f2}
+.barset{display:flex;gap:10px;align-items:end;height:140px;border-bottom:1px solid #c9d4dc}.barcol{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:end;height:100%;font-size:.75rem}
+.bar{background:#357d78;width:65%;min-height:2px;border-radius:4px 4px 0 0}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:9px;border-bottom:1px solid #e4e9ed;font-size:.85rem;overflow-wrap:anywhere}
+th{background:#f3f6f8}.tablewrap{overflow-x:auto}.panel{margin-bottom:14px}.pill{border-radius:15px;background:#e8f0f3;padding:4px 8px;font-size:.75rem}
+@media(max-width:800px){.layout,.panels{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}main{padding:12px}}
+</style></head><body>
+<header><h1>PROTECT · Integrated Operational Intelligence</h1><p>Management dashboard | P05.5 architecture demonstration</p></header>
+<main><div class="notice"><strong>SYNTHETIC PILOT — NOT FOR OPERATIONAL OR GxP DECISIONS.</strong> Only Q01/Q02 contain actual pilot logic. Other modules are architectural placeholders.</div>
+<div id="status" role="status" aria-live="polite">Loading synthetic data…</div>
+<div class="layout"><aside><h2>PROTECT modules</h2><nav id="modules" aria-label="Module navigation"></nav><p class="muted">Availability does not indicate qualification or commercial release.</p></aside>
+<div><section class="panel"><h2 id="sectionTitle">Management overview</h2><p id="sectionDescription" class="muted"></p></section>
+<section class="grid" aria-label="Descriptive summary">
+<div class="card"><div class="muted">Deviation records</div><div class="metric" id="deviations">—</div></div>
+<div class="card"><div class="muted">CAPA records</div><div class="metric" id="capas">—</div></div>
+<div class="card"><div class="muted">Human-review signals</div><div class="metric" id="reviews">—</div></div>
+</section>
+<div class="panels"><section class="panel"><h2>Deviation counts by month</h2><div id="trend" class="barset"></div><p class="muted">Missing periods not imputed; counts not normalized.</p></section>
+<section class="panel"><h2>Client-recorded CAPA outcomes</h2><div id="outcomes"></div></section></div>
+<section class="panel"><h2>Cross-module human review — Q01/Q02 only</h2><div class="tablewrap"><table><thead><tr><th>Signal</th><th>Deviation IDs</th><th>CAPA IDs</th><th>Action</th></tr></thead><tbody id="signals"></tbody></table></div></section>
+<p class="muted" id="limitations"></p>
+</div></div></main><script src="./integrated.js"></script></body></html>

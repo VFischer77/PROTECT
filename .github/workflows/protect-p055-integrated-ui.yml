@@ -1,0 +1,36 @@
+name: PROTECT P05.5 integrated UI qualification
+on:
+  push:
+    branches:
+      - pilot/protect-abi-p055-integrated-ui
+  workflow_dispatch:
+jobs:
+  integrated-ui:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Consolidated P01-P05.5 actual-source regression
+        run: python -m unittest discover -s tests -p 'test_protect_q01_p*.py' -v
+      - name: UI script syntax
+        run: |
+          node --check prototype/p053/dashboard.js
+          node --check prototype/p055/integrated.js
+      - name: Integrated UI synthetic contract
+        run: |
+          python -m protect_q01_p01.integrated_dashboard_demo prototype/p055/synthetic-integrated.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("prototype/p055/synthetic-integrated.json").read_text())
+          assert d["data_origin"]=="SYNTHETIC"
+          assert d["active_module_codes"]==["Q01","Q02"]
+          assert all(m["metrics"] is None for m in d["modules"] if m["status"]!="PILOT_DATA_AVAILABLE")
+          assert d["human_decision"]=="REQUIRED"
+          print("P05.5 integrated UI synthetic contract PASS")
+          PY

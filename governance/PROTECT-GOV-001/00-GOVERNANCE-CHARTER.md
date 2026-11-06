@@ -23,6 +23,8 @@ PROTECT maintains product-specific requirements, design, risk, traceability, ver
 04 Risk-Based Verification & Validation Procedure
 05 Release, Configuration & Change Control
 06 Customer Validation & Supplier Audit Package
+07 SEC-001 Security & Deployment Qualification Strategy
+08 GOV-001.1 Consolidated Founder Review / Decision Record
 
 ## Approval
 Founder/Product Owner: PENDING

@@ -1,5 +1,5 @@
 # PROTECT–GOV–001.1 — Consolidated Founder Review / Decision Record
-**v0.1 — DRAFT / REVIEW**
+**v0.1 — CONDITIONALLY ACCEPTED BY PRODUCT FOUNDER; CO-FOUNDER/QUALITY APPROVAL PENDING**
 
 ## Review conclusion
 The seven GOV-001 documents provide a proportionate framework for a licensed, human-supervised PROTECT decision-support product. SEC-001 adds the proposed customer-hosted deployment strategy and proportionate supplier cybersecurity controls.
@@ -19,7 +19,7 @@ Approval of this strategy does not approve commercial release, completed product
 Before product release: approve intended use and requirements; resolve relevant Q01/Q02 open items; establish architecture and installation baseline; complete risk/security assessment and actual-source V&V; approve customer documentation and release authorization.
 
 ## Open approvals
-Founder product owner: PENDING
+Founder product owner: CONDITIONAL ACCEPTANCE RECORDED (user instruction, 2026-11-05; no formal signature)
 Co-founder/quality reviewer: PENDING
 Decision date/effective date: NOT ASSIGNED
-No signature or approval is inferred from the request to prepare this record.
+Conditional acceptance explicitly provided in conversation. This does not constitute co-founder approval, final document effectiveness, or commercial release authorization.

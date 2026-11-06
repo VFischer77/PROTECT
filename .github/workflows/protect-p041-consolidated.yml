@@ -1,0 +1,44 @@
+name: PROTECT P04.1 consolidated offline qualification
+on:
+  push:
+    branches:
+      - pilot/protect-abi-p05-operational-intelligence
+  workflow_dispatch:
+jobs:
+  qualification:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: P01-P05 actual-source consolidated regression
+        run: python -m unittest discover -s tests -p 'test_protect_q01_p*.py' -v
+      - name: End-to-end synthetic deviation CAPA verification and follow-up
+        run: |
+          python - <<'PY'
+          from protect_q01_p01.integration import Workspace
+          from protect_q01_p01.capa_analytics import CapaRecord
+          from protect_q01_p01.q01_q02_integrated import analyze_q01_q02
+          from protect_q01_p01.operational_intelligence import management_snapshot
+          workspace = Workspace("Pharmaceuticals", "GMP/Quality")
+          deviations = [
+              {"id":"D1","occurred_on":"2026-01-05","failure_mechanism":"seal issue","source_classification":"Minor"},
+              {"id":"D2","occurred_on":"2026-03-05","failure_mechanism":"Seal Issue","source_classification":"Major"},
+          ]
+          capas = [CapaRecord("C1","2026-01-10","2026-02-01","2026-02-20","Effective",("D1","D2"))]
+          result = analyze_q01_q02(workspace,deviations,capas)
+          view = management_snapshot(workspace,deviations,capas)
+          assert result["q01"]["record_count"] == 2
+          assert result["recurrence_capa_review"][0]["linked_capa_ids"] == ("C1",)
+          assert result["post_verification_review_flags"][0]["deviation_id"] == "D2"
+          assert result["q02"]["client_outcome_counts"]["Effective"] == 1
+          assert view["management_decision"] == "HUMAN_REQUIRED"
+          assert view["risk_score"] == "NOT_CALCULATED"
+          assert deviations[0]["source_classification"] == "Minor"
+          assert deviations[1]["source_classification"] == "Major"
+          print("E2E PASS: Q01 → CAPA → verification → later deviation → human-review flag; client outcome preserved")
+          PY

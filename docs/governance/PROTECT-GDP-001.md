@@ -28,3 +28,27 @@ Founders approve foundational architecture and material risk decisions. Designat
 Detailed interfaces, audit-trail technology, and module-specific implementation are deferred until applicable use cases demand them. No code, deployment, or production authorization is implied.
 
 Decision provenance: founder's explicit conditional approval in ChatGPT conversation on 2026-11-06; this GitHub record preserves that design decision, but is not represented as a Part 11 electronic signature.
+
+
+## Design-governance integration — 2026-11-06 (within conditional approval)
+**Status:** GDP-001 is the reference design standard for future PROTECT module specifications and controlled milestone records. This integration is a design-governance update only, not a new founder approval, effective SOP, validated application control, or deployment.
+
+### Applicability decision matrix (provisional; assess by intended use)
+| Context | Record owner / authoritative system | GDP treatment |
+|---|---|---|
+| PROTECT requirements, architecture, source and qualification evidence | PROTECT controlled GitHub/design evidence | R1–R3, controlled versions and decision traceability; Part 11 not presumed solely because stored electronically |
+| PROTECT processing configuration, runs, transformations, AI outputs, monitoring and audit evidence | PROTECT operational record service when implemented | R4; attributable, timestamped, source-linked and protected as required by risk and intended use |
+| Client deviations, CAPAs, inspections, training, change control and approved GxP source records | Client's designated regulated QMS/system | R5; PROTECT references or ingests authorized copies, preserving provenance; no replacement of client approvals |
+| Client BIA, continuity plans, recovery objectives and approved BCMS records | Client BCMS | Client remains authoritative; PROTECT-owned dependency registry maintains synchronized references, not duplicate approvals |
+| Nonregulated client applications | Contractual/client policy plus minimum applicable quality baseline | Proportional GDP controls; do not automatically impose Part 11 |
+| Regulated electronic records/signatures within predicate-rule scope | Designated accountable regulated organization/system | Assess 21 CFR Part 11, EU Annex 11 and applicable predicate rules; require qualified technical and procedural controls before use |
+
+### Mandatory design review gates for subsequent modules
+At module design review, identify: (a) source vs derived record and authoritative owner; (b) record class and mandatory metadata; (c) exact approval/version and lifecycle semantics; (d) retention and retrieval obligation or explicit TBD; (e) audit trail/signature applicability; (f) upstream/downstream provenance and changes affecting prior outputs; (g) exception/CAPA linkage. Reuse one existing module milestone/decision record; do not create parallel registers or archives.
+
+### Decisions reserved for subsequent founder/quality approval
+- Confirm specific regulated intended uses and Part 11/Annex 11 applicability at client/deployment level.
+- Approve retention schedule and storage/archival arrangements by record class and client obligations.
+- Name designated quality approval authority and authorize implementation/qualification scope.
+
+Until decided, label these items **PROVISIONAL / NOT EFFECTIVE**. Do not infer technical controls exist from this guideline. No implementation, production activation, external action or additional testing is authorized by this design integration.
